@@ -9,7 +9,7 @@ public class PuzzlingExamples {
         return myRandom.nextInt(n) + 1;
     }
 
-    static public void createRandomArray(int size) {
+    static public ArrayList<Object> createRandomArray(int size) {
         ArrayList<Integer> nums = new ArrayList<Integer>();
 
         for(int i = 1; i <= size; i++){
