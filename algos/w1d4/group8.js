@@ -8,24 +8,52 @@ class Node {
 class SLL {
     constructor() {
         this.head = null;
-        this.count = 0;
+    }
+
+
+    // if val is contained within the current list, delete it.
+    // return void
+    // assume there are no duplicates
+    // consider the edge case if you have to delete the head node
+
+    //(13) - (9)- ( 7) - (*10)- (14)
+
+    delete(val) {
+        let current = this.head;
+
+        // Edge case for if the node to delete is the head
+        if (current.data == val) {
+            this.head = current.next;
+            current.next = null;
+            return;
+        }
+
+        // Otherwise, "look ahead" and check for values
+        while (current.next.data != value && current.next != null) {
+            current = current.next;
+        }
+
+        // Make sure we only apply the deletion if we actually found the value
+        if (current.next != null) {
+            let nodeToDelete = current.next;
+            current.next = current.next.next;
+            nodeToDelete.next = null;
+        }
     }
 
     // Return the total amount of nodes in the list
     size() {
-        // if (this.head === null) { // Nothing to point to at start
-        //     return 0;
-        // }
-        // var numNodes = 1;
-        // var curNode = this.head; // Start with first node
-        // while (curNode.next !== null) { // Loop while there are nodes to point to
-        //     curNode = curNode.next; // Go to next node (if possible)
-        //     numNodes++;
-        // }
-        // return numNodes;
-        return this.count;
+        if (this.head === null) { // Nothing to point to at start
+            return 0;
+        }
+        var numNodes = 1;
+        var curNode = this.head; // Start with first node
+        while (curNode.next !== null) { // Loop while there are nodes to point to
+            curNode = curNode.next; // Go to next node (if possible)
+            numNodes++;
+        }
+        return numNodes;
     }
-
 
     // Remove from front: remove and return the first node in the SLL
     removeFromFront() {
@@ -34,10 +62,10 @@ class SLL {
         var removed = this.head;
         this.head = this.head.next;
         removed.next = null;
-        this.count--;
         return removed;
     }
 
+    // (2)-> (*3)-> (10)->
 
     // bonus: add a node to the end of the list.
     addToBack(node) {
@@ -46,7 +74,6 @@ class SLL {
 
         // check if the runner is null, meaning our list is headless
         if (runner === null) {
-            this.count++;
             this.head = node;
             return
         }

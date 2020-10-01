@@ -8,24 +8,79 @@ class Node {
 class SLL {
     constructor() {
         this.head = null;
-        this.count = 0;
+    }
+
+    // add
+    // remove
+    //  removebyname/removebyid
+    // search
+    // traverse (visit every element)
+
+    deleteVersion1(data) {
+        // create a runner
+        let runner = this.head;
+        // check if head is empty
+        if (!runner) {
+            return;
+        }
+        // check if head is target
+        if (runner.data == data) {
+            this.removeFromFront();
+            return;
+        }
+
+        // while next exists
+        while (runner.next) {
+            // check if runner next is data
+            if (runner.next.data == data) {
+                // remove it and return
+                runner.next = runner.next.next;
+                return;
+            }
+            // otherwise traverse
+            runner = runner.next;
+        }
+    }
+
+
+    // if val is contained within the current list, delete it.
+    // return void
+    // assume there are no duplicates
+    // consider the edge case if you have to delete the head node
+    deleteVersion2(val) {
+        var runner = this.head;
+        var prev = null;
+
+        if (runner !== null && runner.data == val) {
+            this.head = runner.next;
+            return;
+        }
+
+        while (runner && runner.data !== val) {
+            prev = runner;
+            runner = runner.next;
+        }
+
+        if (runner === null) {
+            return;
+        }
+        //runner is now our node to be deleted
+        prev.next = runner.next;
     }
 
     // Return the total amount of nodes in the list
     size() {
-        // if (this.head === null) { // Nothing to point to at start
-        //     return 0;
-        // }
-        // var numNodes = 1;
-        // var curNode = this.head; // Start with first node
-        // while (curNode.next !== null) { // Loop while there are nodes to point to
-        //     curNode = curNode.next; // Go to next node (if possible)
-        //     numNodes++;
-        // }
-        // return numNodes;
-        return this.count;
+        if (this.head === null) { // Nothing to point to at start
+            return 0;
+        }
+        var numNodes = 1;
+        var curNode = this.head; // Start with first node
+        while (curNode.next !== null) { // Loop while there are nodes to point to
+            curNode = curNode.next; // Go to next node (if possible)
+            numNodes++;
+        }
+        return numNodes;
     }
-
 
     // Remove from front: remove and return the first node in the SLL
     removeFromFront() {
@@ -34,10 +89,10 @@ class SLL {
         var removed = this.head;
         this.head = this.head.next;
         removed.next = null;
-        this.count--;
         return removed;
     }
 
+    // (2)-> (*3)-> (10)->
 
     // bonus: add a node to the end of the list.
     addToBack(node) {
@@ -46,7 +101,6 @@ class SLL {
 
         // check if the runner is null, meaning our list is headless
         if (runner === null) {
-            this.count++;
             this.head = node;
             return
         }
