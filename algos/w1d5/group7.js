@@ -30,6 +30,12 @@ return;
 
     }
 
+    SID
+
+    HEAD  Next   Next   Next   Next  Null
+      1     2      3      4      5     E
+           run    t-run
+
     // return the second to last value if it exists, else return null
     // if: (2) -> (7) -> (8) -> (6) ->
     // return: 8

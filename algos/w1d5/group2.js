@@ -18,13 +18,13 @@ class SLL {
     reverse() {
         runner = this.head;
         newArr = [];
-        newSLL;
+        newSLL = new SLL();
         while(runner.next != null){
             newArr.unshift(runner.data);
             runner = runner.next;
         }
         for(var x=0;x<newArr.length;x++){
-            node;
+            node = new node();
             node.data = newArr[x];
             newSLL.addToBack(node);
         }
@@ -35,7 +35,7 @@ class SLL {
     // return: 8
     secondToLast() {
         if(isEmpty() || this.head.next===null){
-return null;
+            return null;
         }
         var prevRunner = this.head;
         var runner = this.head.next;
@@ -68,9 +68,14 @@ newArr.push(runner.data);
                 scout = scout.next;
                 count++
             }
-            
-            runner = runner.next;
+            if(count===n-1){
+                return runner.data
+            }
+            else{
+                runner = runner.next;
+            }
         }
+        return null;
     }
 
 

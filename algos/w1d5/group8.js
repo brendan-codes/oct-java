@@ -14,7 +14,21 @@ class SLL {
     // original: (2) -> (7) -> (8) -> (6) ->
     // reversed: (6) -> (8) -> (7) -> (2) ->
     // do not move .data between nodes
-    reverse() {}
+    reverse() {
+        var current = this.head;
+        SLL newList = new SLL();
+    
+            while (current) {
+                current = current.next;
+    
+                if(current.next == null){
+                    node.next = this.head;
+                    this.head = node;
+                    
+                }
+            }
+    
+    }
 
     // return the second to last value if it exists, else return null
     // if: (2) -> (7) -> (8) -> (6) ->

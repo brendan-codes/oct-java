@@ -21,7 +21,7 @@ class SLL {
         var temp = null;
         while (curr != null){
             temp =current.next;
-        current.next =prev;
+            current.next =prev;
             prev = current;
             current = temp;
         }

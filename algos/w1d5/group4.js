@@ -38,6 +38,7 @@ class SLL {
             prev = runner;
             runner = next;
         }
+        this.head = prev;
     }
 
 

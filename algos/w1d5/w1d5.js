@@ -24,6 +24,7 @@ class SLL {
         var current = this.head;
         var next = null;
         while (current) {
+            var
             next = current.next;
             current.next = prev;
             prev = current;
@@ -38,8 +39,8 @@ class SLL {
     secondToLast() {
         let runner = this.head;
 
-        if (!runner) return null;
-        if (!runner.next) return null;
+        if (!runner) return -1;
+        if (!runner.next) return -1;
 
         while (runner.next) {
             if (runner.next.next === null) {
@@ -47,7 +48,6 @@ class SLL {
             }
             runner = runner.next;
         }
-        return -1;
     }
 
     // return the nth to last value if it exists, else return -1
@@ -67,9 +67,12 @@ class SLL {
             runnerFast = runnerFast.next;
             count++;
         }
-        return count <= n ? -1 : runnerSlow.data;
+        return count < n ? -1 : runnerSlow.data;
     }
 
+    detectLoop(){}
+    showLoopNode(){}
+    fixLoop(){}
 
     // if val is contained within the current list, delete it.
     // return void
