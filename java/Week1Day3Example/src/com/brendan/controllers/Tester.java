@@ -13,7 +13,8 @@ public class Tester {
 		myFirstExample.printNumberArray(numbers);
 		
 		
-		
+		String example1 = "String";
+		Rectangle example2 = new Rectangle(3, 3, 3, 3);
 
 	}
 

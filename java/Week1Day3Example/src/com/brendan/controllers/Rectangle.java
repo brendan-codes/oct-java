@@ -11,6 +11,14 @@ public class Rectangle extends Shape {
 		this.setWidth(width);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public void example(String word) {
+		
+	}
+	
+	public int area() {
+		return (height * 2) * (width * 2);
+	}
 
 	public Rectangle() {
 		super();

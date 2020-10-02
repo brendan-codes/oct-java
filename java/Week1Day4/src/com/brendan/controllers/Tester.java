@@ -22,6 +22,8 @@ public class Tester {
 		example1.strike(example4);
 		
 		example4.strike(example4);
+		
+		example4.
 	}
 
 }
