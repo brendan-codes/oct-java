@@ -1,6 +1,6 @@
 package com.brendan.shapes;
 
-public class Triangle extends Dot implements AreaInterface, TestInterface {
+public class Triangle extends Dot implements AreaInterface {
 
 	@Override
 	public double getArea() {
@@ -14,10 +14,9 @@ public class Triangle extends Dot implements AreaInterface, TestInterface {
 		return null;
 	}
 
-	@Override
-	public void testMethod() {
-		// TODO Auto-generated method stub
-
+	
+	public void testMethod(String s) {
+		
 	}
 
 }

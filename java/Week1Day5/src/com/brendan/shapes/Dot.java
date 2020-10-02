@@ -6,7 +6,4 @@ public abstract class Dot {
 	}
 	
 	public abstract String getLocation();
-	
-	
-	public abstract void testMethod();
 }

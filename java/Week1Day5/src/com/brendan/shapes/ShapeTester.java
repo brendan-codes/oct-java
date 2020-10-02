@@ -15,8 +15,7 @@ public class ShapeTester {
 		
 		Circle myCirc = new Circle(1, 2, 5);
 		System.out.println(myCirc.getArea());
-		
-		myCirc.
+	
 	}
 
 }
