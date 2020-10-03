@@ -2,8 +2,8 @@ package com.brendan.shapes;
 
 public class Rectangle extends Dot implements AreaInterface {
 	
-	private int x;
-	private int y;
+	protected int x;
+	int y;
 	
 	private int height;
 	private int width;

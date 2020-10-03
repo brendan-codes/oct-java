@@ -1,5 +1,7 @@
 package com.brendan.shapes;
 
+import com.brendan.classes.SuperRectangle;
+
 public class ShapeTester {
 
 	public static void main(String[] args) {
@@ -16,6 +18,8 @@ public class ShapeTester {
 		Circle myCirc = new Circle(1, 2, 5);
 		System.out.println(myCirc.getArea());
 	
+		
+		SuperRectangle superRect = new SuperRectangle(1, 2, 4,5);
 	}
 
 }
