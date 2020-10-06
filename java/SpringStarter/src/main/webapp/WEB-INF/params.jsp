@@ -9,8 +9,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>This is results!</h1>
+	<h1>This is your param: <c:out value="${input}"></c:out></h1>
+	<p>${input}</p>
 	
-	<p>Username: <c:out value="${username}"></c:out>  </p>
+	<p>This is an unsanitized string: ${example}</p>
+	<p>This is a sanitized string: <c:out value="${example}"></c:out></p>
 </body>
 </html>

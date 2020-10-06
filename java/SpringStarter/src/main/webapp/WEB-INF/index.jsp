@@ -11,10 +11,13 @@
 <body>
 	<h1>Hello world!</h1>
 	
-	<h1></h1>
-	
-	<h1></h1>
-	
-	<example></example>
+	<form action="/login" method="POST">
+		<br>
+		username: <input type="text" name="username" placeholder="leave your name!" />
+		<br>
+		password: <input type="password" name="password" placeholder="leave your password" />
+		<br>
+		<input type="submit" value="Login!" />
+	</form>
 </body>
 </html>
