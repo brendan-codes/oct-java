@@ -26,7 +26,29 @@ stack.push(4);
 // bonus
 // given two queues, return the one with the greater sum.
 // return the queues to their original order
-function greaterOfTwoQueues(queue1, queue2) {}
+function greaterOfTwoQueues(queue1, queue2) {
+    var stackOne = new Stack();
+    //var stackTwo = new Stack();
+    var len = queue1.length();
+    let sum1 = 0;
+    for(var i = 0; i<len; i++){
+        var node = queue1.dequeue();
+        stackOne.push(new Node(node.data));
+        queue1.enqueue(node);
+        sum1 = sum1 + stackOne.front.data;
+        var dequeued = stackOne.dequeued();
+        var putBack = queue1.enqueue(data);
+        
+        var popped = stackOne.pop();
+        
+    }
+
+    }
+    
+    
+
+
+}
 
 
 // Queue

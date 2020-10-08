@@ -7,7 +7,7 @@ function isStackSorted(stack) {
     var sortFlag = true;
     temp.push(stack.pop);
     while(!stack.isEmpty){
-        if (stack.peek() > temp.isEmpty()){
+        if (stack.peek() > temp.peek()){
             temp.push(stack.pop());
         } else {
             sortFlag = false;
