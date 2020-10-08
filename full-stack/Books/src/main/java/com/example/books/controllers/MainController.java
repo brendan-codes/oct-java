@@ -12,6 +12,7 @@ import com.example.books.services.BookService;
 
 @RestController
 public class MainController {
+	
     private final BookService bookService;
     public MainController(BookService bookService){
         this.bookService = bookService;
@@ -29,8 +30,5 @@ public class MainController {
     				   @RequestParam(value="pages") Integer numOfPages) {
     	Book newBook = new Book(title, desc, lang, numOfPages);
         return bookService.createBook(newBook);
-    }
-    
-    
-    
+    } 
 }

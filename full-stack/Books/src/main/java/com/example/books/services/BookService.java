@@ -27,6 +27,12 @@ public class BookService {
         return bookRepository.save(b);
     }
     
+    // creates a book
+    public Book updateBook(Book b) {
+        return bookRepository.save(b);
+    }
+    
+    
     // retrieves a book
     public Book findBook(Long id) {
         Optional<Book> optionalBook = bookRepository.findById(id);
