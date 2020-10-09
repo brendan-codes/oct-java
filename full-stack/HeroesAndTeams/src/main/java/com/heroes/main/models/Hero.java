@@ -33,7 +33,7 @@ public class Hero {
 	@Size(min = 2, max = 200)
 	private String power;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="team_id")
 	@JsonIgnore
 	private Team team;

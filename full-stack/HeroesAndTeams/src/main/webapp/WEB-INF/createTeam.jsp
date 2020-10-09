@@ -26,6 +26,10 @@
 	
 	<c:forEach items="${teams}" var="team">
 		<p><c:out value="${team.name }"></c:out></p>
+		<p><a href="/edit-team/${team.id}">Edit!</a></p>
+		<form action="/delete-team/${team.id}" method="POST">
+			<button type="submit">Delete this team!</button>
+		</form>
 	</c:forEach>
 </body>
 </html>

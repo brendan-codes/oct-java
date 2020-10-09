@@ -3,6 +3,7 @@ package com.heroes.main.models;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +16,7 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+//import org.hibernate.annotations.CascadeType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -28,7 +30,7 @@ public class Team {
 	@Size(min = 2, max = 200)
 	private String name;
 	
-	@OneToMany(mappedBy="team", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="team", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Hero> heroes;
 	  
 	
