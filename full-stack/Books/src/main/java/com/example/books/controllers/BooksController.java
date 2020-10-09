@@ -43,6 +43,14 @@ public class BooksController {
 		return "books.jsp";
 	}
 	
+	// edit
+	
+	// delete
+	
+	// show by id
+	
+	// CRUD (create, read, update, delete)
+	
 //     other methods removed for brevity
 //    @RequestMapping("/books/{id}/edit")
 //    public String edit(@PathVariable("id") Long id, Model model) {
