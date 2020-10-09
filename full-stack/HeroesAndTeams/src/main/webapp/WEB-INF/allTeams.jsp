@@ -16,7 +16,7 @@
 		<hr>
 		<p>name: <c:out value="${team.name}"></c:out>
 		<p>id: <c:out value="${team.id}"></c:out>
-		<c:forEach items="${team.heroes}" var="hero">
+		<c:forEach items="${team.getHeroes()}" var="hero">
 			<p>name: <c:out value="${hero.name}"></c:out></p>
 			<p>id: <c:out value="${hero.id}"></c:out></p>
 		</c:forEach>
