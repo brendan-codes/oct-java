@@ -29,7 +29,7 @@ class DLList {
             node.next = this.head;
             this.head = node;
             this.length++;
-        }
+        } 
     }
 
     // pop from tail
@@ -57,16 +57,16 @@ class DLList {
     // target is a node data
     prepend(target, node) {
         let runner = this.head;
-        while (!runner.data != target || !runner == null) {
+        while (!runner == null || !runner.data != target) {
             runner = runner.next;
         }
+        //runner is pointing to target node
+        //this.node 
+        runner.previous = node;
+        this.node.previous=runner.previous;
+        this.node.next= runner;
+        runner.next=target.next; //off here.
 
-
-        // this.node
-        //
-        //
-        //
-        //
     }
 
     // return is empty

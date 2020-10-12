@@ -1,4 +1,4 @@
-//John, Madhu, Neil, Scott
+//John, Neil, Scott
 // DLLNodes have a .next and .prev
 class DLLNode {
     constructor(data) {

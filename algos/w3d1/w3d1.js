@@ -18,11 +18,11 @@ class DLList {
     // == Main Methods ==
 
     // push to head
-    addHead(node)  {
-        if  (!this.head)  { // empty list
+    addHead(node) {
+        if (!this.head) { // empty list
             this.head = node;
             this.tail = node;
-        }  else  {
+        } else {
             this.head.prev = node;
             node.next = this.head;
             this.head = node;
@@ -31,9 +31,9 @@ class DLList {
     }
 
     // pop from tail
-    removeTail()  {
-        if  (this.head == null) return; // empty list
-        if  (this.head === this.tail)  { // one node
+    removeTail() {
+        if (this.head == null) return; // empty list
+        if (this.head === this.tail) { // one node
             var temp = this.tail;
             this.head = null;
             this.tail = null;
@@ -50,32 +50,58 @@ class DLList {
 
     // add node before target if target exists
     // target is a node data
-    prepend(target, node)  {
+    prepend(target, node) {
         var runner = this.head;
-        while  (runner)  {
-            if  (runner.data === target)  {
+        while (runner) {
+            if (runner.data === target) {
                 node.next = runner;
                 node.prev = runner.prev;
                 runner.prev.next = node;
                 runner.prev = node;
                 this.length++;
-                if  (runner === this.head){
+                if (runner === this.head){
                     this.head = node;
                 }
                 return;
-            }  else  {
+            } else {
                 runner = runner.next;
             }
         }
     }
 
+    prepend(target, node) {
+        if (this.head !== null) { // Must have at least one node
+            var curNode = this.head;
+            if (curNode.data === target) { // Edge case: first node only
+                node.next = curNode; // Connect nodes
+                curNode.prev = node;
+                this.head = node; // Move this.head to new node
+                this.length++;
+            } else {
+                while (curNode.next !== null) {
+                    curNode = curNode.next; // Move to next node
+                    if (curNode.data === target) {
+                        // Link this new node to the others
+                        node.next = curNode;
+                        node.prev = curNode.prev;
+                        // Link other nodes to this new node
+                        curNode.prev.next = node;
+                        curNode.prev = node;
+                        this.length++;
+                        break; // Exit while loop - for now, assuming only before first instance of target
+                    }
+                }
+            }
+        }
+    }
+
     // return is empty
-    isEmpty()  {
+    isEmpty() {
         return this.head === null;
     }
 
     // return length
-    size()  {
+    size() {
         return this.length;
     }
 
@@ -89,5 +115,5 @@ class DLList {
         append(target, node){}
 
     // pop from head
-        removeHead(){}
+       removeHead(){}
 }

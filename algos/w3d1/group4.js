@@ -23,18 +23,41 @@ class DLList {
             this.head = node;
         }
         node.next = this.head;
-        this.head = node;
         this.head.prev = node;
-
-
+        this.head = node;
+        node.prev = null;
     }
 
     // pop from tail
-    removeTail() { }
+    removeTail() { 
+        if(this.head == null){
+            return false;
+        }
+        this.tail.prev = null;
+        this.tail = this.tail.prev ;
+        this.tail.next = null ; 
+        
+
+    }
 
     // add node before target if target exists
     // target is a node data
-    prepend(target, node) { }
+    prepend(target, node) { 
+        if(this.head == null){
+            return false;
+        }
+
+        var runner = this.head;
+        while (runner.data != target) {
+            runner = runner.next;
+            return false;
+        }
+
+        node.next = runner;
+        node.prev = runner.prev;
+        runner.prev.next = node;
+        runner.prev = node;
+    }
 
     // return is empty
     isEmpty() {

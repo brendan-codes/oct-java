@@ -18,7 +18,7 @@ class DLList {
     // == Main Methods ==
 
     // push to head
-    addHead(node){
+    addHead(node)  {
         if (this.isEmpty()) {
             this.head = node;
             this.tail = node;
@@ -30,7 +30,7 @@ class DLList {
     }
 
     // pop from tail
-    removeTail(){
+    removeTail()  {
         if (this.isEmpty()) return null;
 
         let node = this.tail;
@@ -40,7 +40,7 @@ class DLList {
 
     // add node before target if target exists
     // target is a node data
-    prepend(target, node){
+    prepend(target, node)  {
         if (this.isEmpty) return null;
         let runner = this.head;
         while (runner) {
@@ -55,12 +55,12 @@ class DLList {
     }
 
     // return is empty
-    isEmpty(){
+    isEmpty()  {
         return this.head === null;
     }
 
     // return length
-    size(){
+    size()  {
         return this.length;
     }
 
@@ -68,7 +68,7 @@ class DLList {
     // == Bonus Methods, just inverted versions of the first set ==
 
     // push to tail
-    addTail(node){
+    addTail(node)  {
         if (this.isEmpty) {
             this.head = node;
             this.tail = node;
@@ -80,7 +80,7 @@ class DLList {
     }
 
     // add after target if exists
-    append(target, node){
+    append(target, node)  {
         if (this.isEmpty) return null;
         let runner = this.head;
         while (runner) {
@@ -95,7 +95,7 @@ class DLList {
     }
 
     // pop from head
-    removeHead(){
+    removeHead()  {
         if (this.isEmpty) return null;
         if (this.size() == 1) {
             let node = this.head;

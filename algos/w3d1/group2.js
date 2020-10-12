@@ -18,7 +18,10 @@ class DLList {
     // == Main Methods ==
 
     // push to head
-    addHead(node){}
+    addHead(node){
+
+        
+    }
 
     // pop from tail
     removeTail(){}

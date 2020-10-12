@@ -31,14 +31,29 @@ class DLList {
         } else {
             var removed = this.tail;
             this.tail = removed.prev;
-removed = null;
-return removed;
+            removed.next = null;
+            return removed;
         }
     }
 
     // add node before target if target exists
     // target is a node data
-    prepend(target, node) { }
+    prepend(target, node) {
+        if(this.head === null) {
+            return null;
+        }
+        var runner = this.head;
+        while(runner) {
+            if(!target) { 
+                return DLList;
+            } else {
+                var prev = target.prev;
+                target.prev = node;
+                node.prev = prev;
+            }
+        }
+        return DLList;
+    }
 
     // return is empty
     isEmpty() {

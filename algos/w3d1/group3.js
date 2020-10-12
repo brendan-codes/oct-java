@@ -18,17 +18,35 @@ class DLList {
 
     // push to head
     addHead(node) {
-        this.head.prev = node;
-        this.head = this.head.prev;
+        if (this.head == null) {
+            this.head = node;
+        } else {
+            this.head = this.head.prev;
+            this.head = node;
+        }
+        this.length++;
     }
 
     removeTail() {
-
+        if(this.tail !== null) {
+            this.tail.prev = null;
+            this.tail.next = null;
+            this.length--;
+        } else {
+            return null;
+        }
     }
 
     // add node before target if target exists
     // target is a node data
     prepend(target, node) {
+        if(this.head == null) {
+            return null;
+        }
+        var runner = this.head;
+        while(runner.data != target){
+            this.next = runner.next;
+        }
 
     }
 
