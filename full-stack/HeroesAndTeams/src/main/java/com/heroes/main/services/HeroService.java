@@ -36,5 +36,6 @@ public class HeroService {
 	public void delete(Long id) {
 		heroRepo.deleteById(id);
 	}
+	
 
 }

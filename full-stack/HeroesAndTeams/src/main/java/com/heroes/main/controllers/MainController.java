@@ -1,5 +1,6 @@
 package com.heroes.main.controllers;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,9 +46,13 @@ public class MainController {
 	
 	
 	@GetMapping("/create-team")
-	public String createTeam(@ModelAttribute("team") Team team, Model model) {
-		model.addAttribute("teams", teamService.allTeams());
-		return "createTeam.jsp";
+	public String createTeam(@ModelAttribute("team") Team team, Model model, HttpSession session) {
+		
+		if(session.getAttribute("userid") != null) {
+			model.addAttribute("teams", teamService.allTeams());
+			return "createTeam.jsp";
+		}
+		return "redirect:/login";
 	}
 	
 	@PostMapping("/create-team")

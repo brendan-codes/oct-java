@@ -1,16 +1,11 @@
 package com.heroes.main.repos;
 
-import java.util.List;
-
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.heroes.main.models.Hero;
+import com.heroes.main.models.User;
 
 @Repository
-public interface HeroRepo extends CrudRepository<Hero, Long> {
-	List<Hero> findAll();
-	
-	
-	
+public interface UserRepo extends CrudRepository<User, Long> {
+    User findByEmail(String email);
 }

@@ -36,5 +36,19 @@ public class TeamService {
 	public void delete(Long id) {
 		teamRepo.deleteById(id);
 	}
+	
+	public Boolean isTeamLargerThanFive(Long id) {
+		Optional<Team> team = teamRepo.findById(id);
+		
+		if(team.isPresent()) {
+			if(team.get().getHeroes().size() > 5) {
+				return true;
+			}else {
+				return false;
+			}
+		}else {
+			return false;
+		}
+	}
 
 }
