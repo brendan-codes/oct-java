@@ -36,5 +36,10 @@
 	
 	
 	</form:form>
+	
+	<c:forEach items="${heroes}" var="oneHero">
+		<p><c:out value="${oneHero.name }"></c:out></p>
+		<p><a href="/add-power/${oneHero.id}">Add power!</a></p>
+	</c:forEach>
 </body>
 </html>

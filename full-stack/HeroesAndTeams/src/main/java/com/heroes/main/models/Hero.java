@@ -99,6 +99,14 @@ public class Hero {
 	public void setTeam(Team team) {
 		this.team = team;
 	}
+	public List<Power> getPowers() {
+		return powers;
+	}
+	public void setPowers(List<Power> powers) {
+		this.powers = powers;
+	}
+	
+	
     
     
 }

@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 
 import com.heroes.main.models.Power;
 import com.heroes.main.repos.PowerRepo;
 
+@Service
 public class PowerService {
 	@Autowired
 	private PowerRepo powerRepo;
