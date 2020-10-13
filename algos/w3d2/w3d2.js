@@ -62,12 +62,13 @@ class DLList {
 
     // return true of false if the current DLL is a palindrome
     checkPalindrome(){
-                \var count = Math.floor(this.length / 2);
+        var count = Math.floor(this.length / 2);
         var forwardRunner = this.head;
         var backwardRunner = this.tail;
         if(this.length === 1){
             return true;
         }
+
         while(count){
             if(forwardRunner.data !== backwardRunner.data){
                 return false;
