@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.heroes.main.models.Hero;
 import com.heroes.main.models.Team;
 import com.heroes.main.services.HeroService;
+import com.heroes.main.services.PowerService;
 import com.heroes.main.services.TeamService;
 
 @Controller
@@ -25,6 +26,13 @@ public class MainController {
 	
 	@Autowired
 	private HeroService heroService;
+	
+	private PowerService powerService;
+	
+	public MainController(PowerService powerService) {
+		this.powerService = powerService;
+	}
+
 	
 	@GetMapping("/create-hero")
 	public String createHero(@ModelAttribute("hero") Hero hero, Model model) {

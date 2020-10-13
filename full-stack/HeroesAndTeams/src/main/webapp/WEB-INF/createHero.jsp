@@ -18,12 +18,6 @@
 			<form:input path="name"></form:input>
 		</div>
 		<div>
-			<p>Power:</p>
-			<form:label path="power"></form:label>
-			<form:errors path="power"></form:errors>
-			<form:input path="power"></form:input>
-		</div>
-		<div>
 			<p>Team:</p>
 			<form:label path="team"></form:label>
 			<form:errors path="team"></form:errors>
