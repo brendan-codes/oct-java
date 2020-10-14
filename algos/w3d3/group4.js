@@ -109,6 +109,35 @@ class DLList {
         }
         this.head = prev;
     }
+        var count = Math.floor(this.length/2);
+        var forwardRunner = this.head;
+        var backwardRunner = this.tail;
+        while(count) {
+            if(forwardRunner.data == value || backwardRunner.data == value) {
+                return true;
+            }
+            forwardRunner = forwardRunner.next;
+            backwardRunner = backwardRunner.prev;
+            count--;
+        }
+        return false;
+    }
+
+    // reverse a doubly linked list
+    reverse() {
+        var prev = null;
+        var current = this.head;
+        this.tail = current;
+        var next = null;
+        while (current) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current.prev = next;
+            current = next;
+        }
+        this.head = prev;
+    }
 
     // remove and return the first node with data === val, if it exists
     removeVal(val){
