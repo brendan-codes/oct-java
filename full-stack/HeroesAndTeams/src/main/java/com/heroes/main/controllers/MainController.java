@@ -92,10 +92,14 @@ public class MainController {
 	}
 	
 	@GetMapping("/add-power/{id}")
-	public String addPower(@PathVariable("id") Long id, Model model) {
+	public String addPower(@PathVariable("id") Long id, Model model, HttpSession session) {
 		Hero hero = heroService.findById(id);
 		if(hero == null) {
 			return "redirect:/create-hero";
+		}
+		if(session.getAttribute("error") != null) {
+			model.addAttribute("error", session.getAttribute("error"));
+			session.invalidate();
 		}
 		System.out.println(hero.getPowers());
 		model.addAttribute("hero", hero);
@@ -105,12 +109,40 @@ public class MainController {
 	
 	@PostMapping("/add-power/{hero_id}")
 	public String submitPower(@PathVariable("hero_id") Long hero_id, 
-							  @RequestParam("power_id") Long power_id) {
+							  @RequestParam("power_id") Long power_id,
+							  HttpSession session) {
 		
 		Hero hero = heroService.findById(hero_id);
 		Power power = powerService.findById(power_id);
+		
+		if(heroService.heroHasPower(hero, power)) {
+			session.setAttribute("error", "hero has power");
+			return "redirect:/add-power/" + hero_id;
+		}
+		
+		if(heroService.heroHasThreePowers(hero)) {
+			session.setAttribute("error", "hero has three powers, remove one to get more! rules!");
+			return "redirect:/add-power/" + hero_id;
+		}
 
 		hero.getPowers().add(power);
+		
+		heroService.save(hero);
+		
+		return "redirect:/add-power/" + hero_id;
+	}
+	
+	@PostMapping("/remove-power/{power_id}")
+	public String removePower(@PathVariable("power_id") Long power_id,
+							  @RequestParam("hero_id") Long hero_id) {
+		
+		System.out.println(power_id);
+		System.out.println(hero_id);
+		
+		Hero hero = heroService.findById(hero_id);
+		Power power = powerService.findById(power_id);
+		
+		hero.getPowers().remove(power);
 		
 		heroService.save(hero);
 		
