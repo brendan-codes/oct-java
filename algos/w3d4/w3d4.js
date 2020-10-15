@@ -7,6 +7,166 @@ class DLLNode {
     }
 }
 
+// share with your group
+// https://prod.liveshare.vsengsaas.visualstudio.com/join?7B5DC63BEEE268F5CF590E0D6F92469059FE
+
+// share with your group
+// https://prod.liveshare.vsengsaas.visualstudio.com/join?7B5DC63BEEE268F5CF590E0D6F92469059FE
+
+// [4, 9, 3, 2, 5, 10, 7, 22]
+// => 5
+// [4, 3, 2] left
+// [9, 10, 7, 22] right
+
+// [4, 3, 2, 5, 9, 10, 7, 22] output
+
+// return a DLL with the values partitioned by the pivot
+// so that all nodes with values lower than pivot are to the left
+// and all nodes with values higher than pivot are to the right
+// DLL contains numeric integer values
+function partitionDLL(DLL, pivot) {
+    var lefts = new DLL();
+    var equals = new DLL();
+    var rights = new DLL();
+
+    if (DLL.isEmpty()) { return DLL }
+
+    while (!DLL.isEmpty()) {
+        var node = DLL.removeTail();
+        if (node.value > pivot) {
+            rights.addTail(node);
+        } else if (node.value < pivot) {
+            lefts.addTail(node);
+        } else {
+            equals.addTail(node);
+        }
+    }
+
+    // there has to be a better way
+
+    while(!lefts.isEmpty()){
+
+    }
+
+    // all
+    if (lefts.head && (equals.head && rights.head)) {
+        lefts.tail.next = equals.head;
+        equals.tail.next = rights.head;
+        DLL.head = lefts.head;
+        DLL.tail = rights.tail;
+        return DLL;
+    }
+
+    // just lefts and rights
+    if (lefts.head && rights.head) {
+        lefts.tail.next = rights.head;
+        DLL.head = lefts.head;
+        DLL.tail = rights.tail;
+        return DLL;
+    }
+
+    // just equals and rights
+    if (equals.head && rights.head) {
+        equals.head.next = rights.head;
+        DLL.head = equals.head;
+        DLL.tails = equals.tail;
+        return DLL;
+    }
+
+    // just lefts and equals
+    if (lefts.head && equals.head) {
+        lefts.heads.next = equals.head;
+        DLL.head = lefts.head;
+        DLL.tail = equals.tail;
+        return DLL;
+    }
+
+    // just lefts
+    if (lefts.head) {
+        DLL.head = lefts.head;
+        DLL.tail = lefts.tail;
+        return lefts;
+    }
+
+    // just equals
+    if (equals.head) {
+        DLL.head = equals.head;
+        DLL.tail = equals.tail;
+        return equals;
+    }
+
+    // just rights
+    if (rights.head) {
+        DLL.head = rights.head;
+        DLL.tail = rights.tail;
+        return rights;
+    }
+}
+
+function partitionV2(DLL, pivot) {
+    // current to head
+    var current = DLL.head;
+    // set six pointers, for the front and back of three new 'lists'
+    var lesserHead, lesserTail, greaterHead, greaterTail, equalHead, equalTail;
+
+    // loop the entire list
+    while (current) {
+        // duplicates and also centering val
+        if (current.data === pivot) {
+            // if the first in the equal list
+            if (!equalHead) {
+                equalHead = current;
+                equalTail = current;
+            } else {
+                // otherwise
+                equalTail.next = current;
+                equalTail = equalTail.next;
+            }
+            // lesser head
+        } else if (current.data < pivot) {
+            if (!lesserHead) {
+                lesserHead = current;
+                lesserTail = current;
+            } else {
+                lesserTail.next = current;
+                lesserTail = lesserTail.next;
+            }
+            // greater head
+        } else if (current.data > pivot) {
+            if (!greaterHead) {
+                greaterHead = current;
+                greaterTail = current;
+            } else {
+                greaterTail.next = current;
+                greaterTail = greaterTail.next;
+            }
+        }
+        // move current
+        current = current.next;
+    }
+
+    // snip the tail of the greaters so it doesn't reference
+    if (greaterTail) greaterTail.next = null;
+
+    // if nothing is equal, give back the partition anyway
+    if (!equalHead) {
+        lesserTail.next = greaterHead;
+        // don't forget to move the head
+        DLL.head = lesserHead;
+        DLL.tail = greaterTail;
+        return DLL;
+    }
+
+    // otherwise tie them all together
+    lesserTail.next = equalHead;
+    equalTail.next = greaterHead;
+    // don't forget to move the head
+    DLL.head = lesserTail;
+    DLL.tail = greaterTail;
+    return DLL;
+}
+
+
 // DLLists have both a .head and .tail pointer
 class DLList {
     constructor() {
@@ -17,11 +177,6 @@ class DLList {
 
     // == Main Methods ==
 
-
-    // partition current DLL by the given pivot value
-    // so that all nodes with values lower than pivot are to the left
-    // and all nodes with values higher than pivot are to the right
-    partition(pivot){}
 
     // return true or false if value exists
     exists(value) {
