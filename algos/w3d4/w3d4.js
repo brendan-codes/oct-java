@@ -44,10 +44,6 @@ function partitionDLL(DLL, pivot) {
 
     // there has to be a better way
 
-    while(!lefts.isEmpty()){
-
-    }
-
     // all
     if (lefts.head && (equals.head && rights.head)) {
         lefts.tail.next = equals.head;
