@@ -1,6 +1,7 @@
 package com.heroes.main.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -29,14 +32,17 @@ public class Hero {
 	
 	@Size(min = 2, max = 200)
 	private String name;
-	  
-	@Size(min = 2, max = 200)
-	private String power;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="team_id")
 	@JsonIgnore
 	private Team team;
+	
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="heroes_with_powers",
+			   joinColumns = @JoinColumn(name="hero_id"),
+			   inverseJoinColumns = @JoinColumn(name="power_id"))
+	private List<Power> powers;
 	
 	
 	@Column(updatable = false)
@@ -59,9 +65,8 @@ public class Hero {
     	
     }
     
-    public Hero(String name, String power) {
+    public Hero(String name) {
     	this.name = name;
-    	this.power = power;
     }
     
 	public Long getId() {
@@ -75,12 +80,6 @@ public class Hero {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getPower() {
-		return power;
-	}
-	public void setPower(String power) {
-		this.power = power;
 	}
 	public Date getCreatedAt() {
 		return createdAt;
@@ -100,6 +99,14 @@ public class Hero {
 	public void setTeam(Team team) {
 		this.team = team;
 	}
+	public List<Power> getPowers() {
+		return powers;
+	}
+	public void setPowers(List<Power> powers) {
+		this.powers = powers;
+	}
+	
+	
     
     
 }

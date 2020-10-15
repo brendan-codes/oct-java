@@ -18,12 +18,6 @@
 			<form:input path="name"></form:input>
 		</div>
 		<div>
-			<p>Power:</p>
-			<form:label path="power"></form:label>
-			<form:errors path="power"></form:errors>
-			<form:input path="power"></form:input>
-		</div>
-		<div>
 			<p>Team:</p>
 			<form:label path="team"></form:label>
 			<form:errors path="team"></form:errors>
@@ -42,5 +36,10 @@
 	
 	
 	</form:form>
+	
+	<c:forEach items="${heroes}" var="oneHero">
+		<p><c:out value="${oneHero.name }"></c:out></p>
+		<p><a href="/add-power/${oneHero.id}">Add power!</a></p>
+	</c:forEach>
 </body>
 </html>
