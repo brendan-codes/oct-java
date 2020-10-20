@@ -1,5 +1,7 @@
 package com.heroes.main.models;
 
+
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -26,26 +28,26 @@ public class Hero {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Size(min = 2, max = 200)
 	private String name;
-	  
+
 	@Size(min = 2, max = 200)
 	private String power;
-	
+
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="team_id")
 	@JsonIgnore
 	private Team team;
-	
-	
+
+
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
-	
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
-	
+
     @PrePersist
     protected void onCreate(){
         this.createdAt = new Date();
@@ -54,16 +56,16 @@ public class Hero {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
-    
+
     public Hero() {
-    	
+
     }
-    
+
     public Hero(String name, String power) {
     	this.name = name;
     	this.power = power;
     }
-    
+
 	public Long getId() {
 		return id;
 	}
@@ -100,8 +102,8 @@ public class Hero {
 	public void setTeam(Team team) {
 		this.team = team;
 	}
-    
-    
+
+
 }
 
 //
@@ -112,45 +114,45 @@ public class Hero {
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    private Long id;
-//    
+//
 //    @Size(min = 2, max = 200)
 //    private String title;
-//    
+//
 //    @Size(min = 2, max = 200)
 //    private String description;
-//    
+//
 //    @Size(min = 2, max = 40)
 //    private String language;
-//    
+//
 //    @Min(10)
 //    private Integer numberOfPages;
-//    
+//
 //    // This will not allow the createdAt column to be updated after creation
 //    @Column(updatable=false)
 //    @DateTimeFormat(pattern="yyyy-MM-dd")
 //    private Date createdAt;
-//    
+//
 //    @DateTimeFormat(pattern="yyyy-MM-dd")
 //    private Date updatedAt;
-// 
-//    
+//
+//
 //    public Book() {
-//    	
+//
 //    }
-//    
+//
 //    public Book(String title, String desc, String lang, int pages) {
 //        this.title = title;
 //        this.description = desc;
 //        this.language = lang;
 //        this.numberOfPages = pages;
 //    }
-//    
+//
 //    // other getters and setters removed for brevity
 //    @PrePersist
 //    protected void onCreate(){
 //        this.createdAt = new Date();
 //    }
-//    
+//
 //    @PreUpdate
 //    protected void onUpdate(){
 //        this.updatedAt = new Date();
@@ -211,6 +213,6 @@ public class Hero {
 //	public void setUpdatedAt(Date updatedAt) {
 //		this.updatedAt = updatedAt;
 //	}
-//    
-//    
+//
+//
 //}

@@ -20,6 +20,56 @@ class BST {
         return this.root === null;
     };
 
+    // return true or false is val exists within the current tree
+    // if current is undefined, current = this.root
+    find(val, current){
+        if(current === undefined){
+            current = this.root;
+        }
+
+        // ..
+    }
+
+    // remove and return the smallest node of a given tree
+    removeSmallest(current){
+        if(current === undefined){
+            current = this.root;
+        }
+
+        // ..
+
+//if smallest node is notthe furthest left, we have to move the right value (if present) to the node just before the furthest left.
+
+    }
+
+    // remove and return the smallest node of a given tree
+    removeLargest(current){
+        if(current === undefined){
+            current = this.root;
+        }
+        if (this.root===undefined){return}
+        var runner = tree.root;
+        while(runner.right){
+            runner = runner.right;
+        }
+        if (runner.left){
+            //set a variable for value of the left of the furthest right to the node just before furthest right.
+            var smRun=runner.prev;
+            runner.left.prev = smRun;
+            SmRun.next=runner.left;
+        //might need logic to unpoint runner as well?
+
+        }
+
+            return runner
+        // ..
+
+//if the largest node has a value that is smaller attached to it;
+//attach the smaller node to the previous "largest" node arrows.
+
+
+    }
+
     // recursive
     insert(node, tree){
         if(tree === undefined){

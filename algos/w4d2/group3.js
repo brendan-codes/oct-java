@@ -1,5 +1,5 @@
 // https://www.cs.usfca.edu/~galles/visualization/BST.html
-
+//Neil, Jennifer Blake Cindhuri
 class BSTNode {
     constructor(val) {
         this.val = val;
@@ -19,6 +19,60 @@ class BST {
     isEmpty(){
         return this.root === null;
     };
+
+    // return true or false is val exists within the current tree
+    // if current is undefined, current = this.root
+    find(val, current){
+        if(current === undefined){
+            current = this.root;
+        }
+        while(current.right!==null || current.left!==null){
+            if(val>current.val){
+                current = current.right;
+            }
+            else if(val<current.val){
+                current = current.left;
+            }
+            else{
+                return true;
+            }
+        }
+        return false;
+
+
+        // ..
+    }
+
+    // remove and return the smallest node of a given tree
+    removeSmallest(current){
+        if(current === undefined){
+            current = this.root;
+        }
+        while(current.left){
+            current=current.left;
+        }
+        removedBST=current;
+        delete removedBST;
+        return removedBST;
+
+
+        // ..
+    }
+
+    // remove and return the smallest node of a given tree
+    removeLargest(current){
+        if(current === undefined){
+            current = this.root;
+        }
+        while(current.right){
+            current=current.right;
+        }
+        removedBST=current;
+        delete removedBST;
+        return removedBST;
+
+        // ..
+    }
 
     // recursive
     insert(node, tree){

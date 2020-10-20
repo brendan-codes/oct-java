@@ -10,7 +10,4 @@ import com.heroes.main.models.Hero;
 @Repository
 public interface HeroRepo extends CrudRepository<Hero, Long> {
 	List<Hero> findAll();
-	
-	
-	
 }

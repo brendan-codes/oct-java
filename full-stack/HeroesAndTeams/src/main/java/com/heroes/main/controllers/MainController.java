@@ -32,6 +32,7 @@ public class MainController {
 		return "createHero.jsp";
 	}
 	
+
 	@PostMapping("/create-hero")
 	public String submitTeam(@Valid @ModelAttribute("hero") Hero hero, BindingResult result) {
 		if(result.hasErrors()) {
@@ -78,8 +79,6 @@ public class MainController {
 	public String editTeam(@PathVariable("id") Long id, 
 						   @Valid @ModelAttribute("team") Team team, 
 						   BindingResult result) {
-		
-		
 		if(result.hasErrors()) {
 			return "edit-team/" + id + ".jsp";
 		}
