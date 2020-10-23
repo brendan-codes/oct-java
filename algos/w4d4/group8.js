@@ -26,8 +26,6 @@ myBST.insert(new BSTNode(10));
         10     22      35     70
       /   \   /  \    /  \   /  \
     4    12  18  24  31  44 66  90
-                                 \
-                                 100
 */
 
 class BST {
@@ -41,7 +39,15 @@ class BST {
 
     // height
     // size
-    // delete(val)
+
+    // - is it the root?
+    // AND
+    // - does it have one child?
+    // - does it have no children?
+    // - does it have two children?(try swapping with the smallest of the right subtree or the largest of the left subtree. you may swap values)
+
+    // findAndDelete
+    delete(val, current) { }
 
     // Preorder (DFS - Depth First Search)
     // (Root / Parent, Left, Right)
@@ -59,7 +65,7 @@ class BST {
         }
     }
     // reverseInorder
-    
+
     // Inorder (DFS)
     // (Left, Root / Parent, Right)
     // 4, 10, 12, 15, 18, 22, 24, 25, 31, 35, 44, 50, 66, 70, 90

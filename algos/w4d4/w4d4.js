@@ -19,15 +19,13 @@ myBST.insert(new BSTNode(10));
 
 /*
                     root
-                <-- 25 -->
+                <-- 31 -->
               /            \
             15             50
           /    \         /    \
-        10     22      35     70
-      /   \   /  \    /  \   /  \
-    4    12  18  24  31  44 66  90
-                                 \
-                                 100
+        12     22      35     90
+              /  \      \
+             18  24     44
 */
 
 class BST {
@@ -41,7 +39,62 @@ class BST {
 
     // height
     // size
-    // delete(val)
+
+    // - does it exist?
+    // AND
+    // - is it the root?
+    // AND
+    // - does it have one child?
+    // - does it have no children?
+    // - does it have two children? (try swapping with the smallest of the right subtree or the largest of the left subtree. you may swap values)
+
+    // findAndDelete
+    delete(val, current) {
+        // if current is undefined, set as root
+        if (current === undefined) {
+            current = this.root;
+        };
+
+        // if root is null, give up
+        if (current === null) {
+            return null;
+        };
+
+        // check if val is smaller or greater
+        if (val < current.val) {
+            // if smaller, ask again on the left subtree
+            current.left = this.delete(val, current.left);
+        } else if (val > current.val) {
+            // if larger, ask again on the right subtree
+            current.right = this.delete(val, current.right);
+        } else {
+            //otherwise val is === to current.val
+
+            // one child to the right, or empty
+            if (!current.left) {
+                var temp = current;
+                current = current.right;
+                return temp;
+                // one child to the left
+            } else if (!current.right) {
+                var temp = current;
+                current = current.left;
+                return temp;
+            }
+
+            // two children
+
+            // get the smallest value from the right subtree
+            var temp = this.getSmallestFromSubtree(current.right);
+
+            // swap it with our current (might even be the root, who cares)
+            current.val = temp.val;
+
+            // call delete again, on the val we stole out of temp and swapped to current
+            // this is always a leaf node with one or less children.
+            current.right = this.delete(temp.val, current.right);
+        }
+    }
 
     // Preorder (DFS - Depth First Search)
     // (Root / Parent, Left, Right)
@@ -59,7 +112,7 @@ class BST {
         }
     }
     // reverseInorder
-    
+
     // Inorder (DFS)
     // (Left, Root / Parent, Right)
     // 4, 10, 12, 15, 18, 22, 24, 25, 31, 35, 44, 50, 66, 70, 90

@@ -26,8 +26,6 @@ myBST.insert(new BSTNode(10));
         10     22      35     70
       /   \   /  \    /  \   /  \
     4    12  18  24  31  44 66  90
-                                 \
-                                 100
 */
 
 class BST {
@@ -41,7 +39,72 @@ class BST {
 
     // height
     // size
-    // delete(val)
+
+    // - is it the root?
+    // AND
+    // - does it have one child?
+    // - does it have no children?
+    // - does it have two children? (try swapping with the smallest of the right subtree or the largest of the left subtree. you may swap values)
+
+    // findAndDelete (find  is on line 177 (or more now))
+    delete(val, current) {
+        if (current === undefined) {
+            current = this.root;
+        }
+
+        if (this.find(val)) {
+            return this.remove(val)
+        }
+
+        return null;
+
+        //point left and right to null after
+    }
+
+
+    removeVal(val) {
+        var runner = this.head;
+        if (!runner) {
+            return runner;
+        }
+        if (runner === this.tail && runner.data === val) {
+            // remove head and tail
+            this.head = null;
+            this.tail = null;
+            this.length--;
+            return runner;
+        }
+        if (runner.data === val) {
+            // remove just head
+            this.head = runner.next;
+            this.head.prev = null;
+            runner.next = null;
+            this.length--;
+            return runner;
+            // return this.removeHead();
+        }
+        while (runner) {
+            if (runner.data === val) {
+                // remove runner
+                if (runner === this.tail) {
+                    this.tail = runner.prev;
+                    runner.prev.next = null;
+                    runner.prev = null;
+                    length--;
+                    return runner;
+                }
+                runner.prev.next = runner.next;
+                runner.next.prev = runner.prev;
+                runner.next = null;
+                runner.prev = null;
+                this.length--;
+                return runner;
+            }
+            runner = runner.next;
+        }
+    }
+
+
 
     // Preorder (DFS - Depth First Search)
     // (Root / Parent, Left, Right)
@@ -59,7 +122,7 @@ class BST {
         }
     }
     // reverseInorder
-    
+
     // Inorder (DFS)
     // (Left, Root / Parent, Right)
     // 4, 10, 12, 15, 18, 22, 24, 25, 31, 35, 44, 50, 66, 70, 90
